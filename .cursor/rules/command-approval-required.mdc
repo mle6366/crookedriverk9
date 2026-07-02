@@ -1,0 +1,49 @@
+---
+description: Require user approval before any agent executes a command
+alwaysApply: true
+---
+
+# Command Approval Required
+
+Every shell command must be approved by the user before it is executed. No exceptions.
+
+## Before Running Any Command
+
+1. **Propose first, run second** — Describe what you intend to run and why. Do not invoke the Shell tool until the user explicitly approves that specific command (or batch of commands).
+2. **Wait for confirmation** — Treat silence, partial answers, or unrelated replies as *not* approval. Only proceed after a clear go-ahead (e.g. "yes", "run it", "approved").
+3. **One approval per proposal** — If the plan changes (different command, flags, paths, or order), propose again and get fresh approval.
+
+## What Counts as a Command
+
+This applies to **all** terminal/shell invocations, including:
+
+- Read-only commands (`ls`, `cat`, `git status`, `git log`, `git diff`)
+- Package installs and builds (`npm install`, `npm run build`)
+- Git writes (`git add`, `git commit`, `git push`)
+- Scripts, one-liners, and chained commands (`&&`, `|`, subshells)
+- Background or long-running processes
+
+## When Proposing a Command
+
+Include in your message:
+
+- The exact command(s) to run
+- What you expect them to do
+- Why they are needed for the current task
+
+Example:
+
+> I need to run `npm test` to verify the fix. Approve?
+
+Do **not** run the command in the same turn as the proposal unless the user has already approved that exact command in this conversation.
+
+## If Approval Is Denied or Modified
+
+- Do not run the denied command.
+- Revise the plan, propose the updated command(s), and wait for approval again.
+
+## Do Not Bypass Approval
+
+- Do not run commands "just to investigate" without approval.
+- Do not assume prior approval covers new or changed commands.
+- Do not batch unrelated commands under one approval unless the user approved the full batch.

@@ -1,0 +1,53 @@
+---
+description: Require user approval before any internet download or network fetch
+alwaysApply: true
+---
+
+# Internet Download Approval Required
+
+Any retrieval of data or files from the internet must be approved by the user before it happens. No exceptions.
+
+## Before Downloading or Fetching Anything
+
+1. **Propose first, fetch second** — Describe what you intend to download or fetch, from where, and why. Do not proceed until the user explicitly approves that specific action.
+2. **Wait for confirmation** — Treat silence, partial answers, or unrelated replies as *not* approval. Only proceed after a clear go-ahead (e.g. "yes", "go ahead", "approved").
+3. **One approval per proposal** — If the source, URL, package, version, or method changes, propose again and get fresh approval.
+
+## What Requires Approval
+
+This applies to **all** internet access that retrieves external content, including:
+
+- **Package and dependency installs** — `npm install`, `pip install`, `brew install`, `cargo fetch`, etc.
+- **Direct downloads** — `curl`, `wget`, or scripts that pull files from URLs
+- **Git network operations** — `git clone`, `git fetch`, `git pull`, submodule updates
+- **Container and artifact pulls** — `docker pull`, downloading release binaries or assets
+- **Tool-based fetches** — `WebFetch`, `WebSearch`, MCP servers, or any API call that reaches external hosts
+- **Build-time fetches** — downloading fonts, images, datasets, docs, or config from remote URLs
+- **Implicit downloads** — commands or tools that may fetch from the network as a side effect (e.g. package managers, `npx`, `pipx`)
+
+## When Proposing a Download
+
+Include in your message:
+
+- What will be downloaded or fetched (package name, URL, or resource)
+- The source (registry, domain, or repository)
+- Why it is needed for the current task
+- Where it will land locally, if applicable (e.g. `node_modules`, a file path)
+
+Example:
+
+> I need to fetch `https://example.com/schema.json` to validate the config format. Approve?
+
+Do **not** perform the download or fetch in the same turn as the proposal unless the user has already approved that exact action in this conversation.
+
+## If Approval Is Denied or Modified
+
+- Do not perform the denied download or fetch.
+- Revise the plan, propose the updated action, and wait for approval again.
+
+## Do Not Bypass Approval
+
+- Do not fetch "just to check" without approval.
+- Do not assume prior approval covers a different URL, package, or version.
+- Do not batch unrelated downloads under one approval unless the user approved the full list.
+- Prefer local project files and already-installed dependencies when possible to avoid unnecessary network access.
