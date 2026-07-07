@@ -124,6 +124,11 @@ body.programs .hero {
   margin: 0 auto 1.5rem;
 }
 
+/* Allow wider hero text on the About page */
+body.about .hero p {
+  max-width: 60rem;
+  width: min(60rem, 100%);
+}
 .path-flow {
   display: flex;
   align-items: center;
@@ -224,6 +229,41 @@ section:nth-of-type(even) {
   line-height: 1.75;
 }
 
+.about-image {
+  max-width: 20rem;
+  margin: 0 auto 2rem;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  align-items: stretch;
+}
+
+.image-grid > div {
+  width: min(20rem, 100%);
+  height: 22rem; /* 10% taller than 20rem */
+  overflow: hidden;
+  display: grid;
+}
+
+.image-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: var(--radius);
+}
 
 .card,
 .program-card {
