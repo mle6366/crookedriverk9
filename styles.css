@@ -23,6 +23,7 @@ html {
 
 body {
   margin: 0;
+  padding-inline: 1rem;
   font-family: Georgia, "Times New Roman", serif;
   color: var(--color-text);
   background: var(--color-bg);
@@ -223,11 +224,6 @@ section:nth-of-type(even) {
   line-height: 1.75;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
 
 .card,
 .program-card {
@@ -327,7 +323,7 @@ section:nth-of-type(even) .program-card {
   .about-content {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding-inline: 0;
+    padding-inline: 1rem;
   }
 }
 
