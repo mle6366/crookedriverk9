@@ -1,0 +1,4 @@
+# Ignore all image files inside the gitignore_images folder
+/gitignore_images/**/*.{png,jpg,jpeg,gif,webp,svg}
+# Also ignore any files directly in the folder
+/gitignore_images/*
