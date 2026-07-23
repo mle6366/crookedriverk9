@@ -90,6 +90,78 @@ nav a[aria-current="page"] {
   color: var(--color-accent);
 }
 
+.nav-toggle {
+  display: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0.2rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 0.18rem;
+  background: var(--color-text);
+  border-radius: 999px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 680px) {
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-inner {
+    position: relative;
+    align-items: center;
+  }
+  nav[aria-label="Main"] {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 1rem;
+    left: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: 0 16px 28px rgba(0,0,0,0.08);
+    display: none;
+    z-index: 20;
+  }
+  nav[aria-label="Main"].open {
+    display: block;
+  }
+  nav[aria-label="Main"] ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 1rem;
+    list-style: none;
+  }
+  nav[aria-label="Main"] ul li {
+    margin: 0;
+  }
+}
+
 .hero {
   padding: 5rem 0 4rem;
   text-align: center;
@@ -431,10 +503,20 @@ section:nth-of-type(even) .program-card {
   text-align: center;
   max-width: 32rem;
   margin-inline: auto;
+  width: min(100%, 32rem);
 }
 
 .contact-box p {
   margin: 0 0 1.5rem;
+  font-size: clamp(0.95rem, 2vw, 1rem);
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+@media (max-width: 520px) {
+  .contact-box {
+    padding: 1.5rem;
+  }
 }
 
 .contact-email,
